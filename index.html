@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRIPS2 - Smart Energy for Nepal's Industrial Future</title>
+    <style>
+        :root {
+            --grips-green: #00843D;
+            --grips-blue: #005EB8;
+            --grips-amber: #F7A600;
+            --dark-gray: #4D4D4D;
+            --light-gray: #E5E5E5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: #FFFFFF;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        #mainHeader {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--grips-green);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--grips-blue);
+        }
+        
+        .cta-button {
+            background-color: var(--grips-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #004a8f;
+        }
+        
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://i.ibb.co/M1TyZbC/solar-panels-industry.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 180px 0 100px;
+            margin-top: 80px;
+        }
+        
+        #hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        #hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Key Numbers */
+        .key-numbers {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 60px 0;
+        }
+        
+        .number-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .number-card .number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--grips-blue);
+            margin-bottom: 10px;
+        }
+        
+        .number-card .label {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+        
+        /* About Section */
+        #about {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            color: var(--grips-green);
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--grips-amber);
+            margin: 15px auto 0;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 24px;
+            color: var(--grips-blue);
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Challenge Solution Section */
+        #challenge-solution {
+            background-color: #f8f8f8;
+            padding: 80px 0;
+        }
+        
+        .cs-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .cs-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .cs-card h3 {
+            font-size: 24px;
+            color: var(--grips-blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .cs-card h3 span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--grips-amber);
+            color: white;
+            border-radius: 50%;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+        
+        .cs-card ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .cs-card ul li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .cs-card ul li:before {
+            content: '✓';
+            color: var(--grips-green);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        /* Technical Approach */
+        #technical {
+            padding: 80px 0;
+        }
+        
+        .tech-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .tech-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            transition: transform 0.3s;
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .tech-card .icon {
+            font-size: 40px;
+            color: var(--grips-blue);
+            margin-bottom: 20px;
+        }
+        
+        .tech-card h3 {
+            font-size: 20px;
+            color: var(--grips-green);
+            margin-bottom: 15px;
+        }
+        
+        /* Benefits Section */
+        #benefits {
+            background-color: #f8f8f8;
+            padding: 80px 0;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .benefit-card {
+            display: flex;
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .benefit-icon {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            background-color: var(--grips-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-right: 20px;
+        }
+        
+        .benefit-content h3 {
+            font-size: 20px;
+            color: var(--grips-green);
+            margin-bottom: 10px;
+        }
+        
+        /* Partners Section */
+        #partners {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .partners-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        
+        .partner-logo {
+            max-width: 180px;
+            margin: 20px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+        
+        .partner-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+        
+        /* CTA Section */
+        #cta {
+            background-color: var(--grips-blue);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        #cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        #cta p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .cta-primary {
+            background-color: white;
+            color: var(--grips-blue);
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-primary:hover {
+            background-color: var(--light-gray);
+        }
+        
+        .cta-secondary {
+            border: 2px solid white;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-about h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        .footer-links h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #444;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--grips-blue);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            text-align: center;
+            color: #888;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .key-numbers {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .about-content, .cs-content, .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tech-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            #hero h1 {
+                font-size: 36px;
+            }
+            
+            #hero p {
+                font-size: 18px;
+            }
+            
+            .tech-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            nav ul li {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .key-numbers {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            #mainHeader, nav, #cta, footer {
+                display: none;
+            }
+            
+            body {
+                font-size: 12pt;
+            }
+            
+            #hero {
+                padding: 20pt 0;
+                margin-top: 0;
+                background: none;
+                color: black;
+            }
+            
+            #hero h1 {
+                font-size: 24pt;
+            }
+            
+            #hero p {
+                font-size: 14pt;
+            }
+            
+            .section-title {
+                font-size: 20pt;
+            }
+            
+            .about-content, .cs-content, .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tech-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .partner-logo {
+                filter: none;
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="mainHeader">
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://i.ibb.co/Qj5vr00/grips-logo.png" alt="GRIPS2 Logo">
+                <div class="logo-text">GRIPS2</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#challenge-solution">Solution</a></li>
+                    <li><a href="#technical">Technology</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#partners">Partners</a></li>
+                    <li><a href="#cta" class="cta-button">Join Our Network</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <h1>Smart Energy for Nepal's Industrial Future</h1>
+            <p>GRIPS2 is deploying Nepal's first industrial-scale smart solar storage microgrid, revolutionizing how factories access reliable, affordable, and sustainable power.</p>
+            <a href="#about" class="cta-button">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Key Numbers -->
+    <div class="container">
+        <div class="key-numbers">
+            <div class="number-card">
+                <div class="number">$1.3M</div>
+                <div class="label">SAVINGS OVER 25 YEARS</div>
+            </div>
+            <div class="number-card">
+                <div class="number">2,800</div>
+                <div class="label">TONNES CO₂ OFFSET</div>
+            </div>
+            <div class="number-card">
+                <div class="number">500+</div>
+                <div class="label">FACTORY WORKERS BENEFITING</div>
+            </div>
+            <div class="number-card">
+                <div class="number">1,000</div>
+                <div class="label">MW MARKET POTENTIAL IN NEPAL</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About GRIPS2</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>The Next Evolution in Industrial Energy</h3>
+                    <p>GRIPS2 (Grid Resilience through Intelligent Photovoltaics and Storage - Phase 2) is scaling up a successful Phase 1 pilot to implement Nepal's first industrial-scale smart solar and battery microgrid at the Laxmi Steel factory in Sunwal.</p>
+                    <p>Our innovative solution combines solar PV, battery storage, and AI-driven control systems to enhance energy reliability, reduce costs, and support decarbonization of Nepal's industrial sector.</p>
+                    <p>As a "lighthouse" project funded by the UNIDO A2D Facility, GRIPS2 demonstrates how clean energy technologies can transform industrial operations in developing countries, providing a model that can be replicated across Nepal and beyond.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://i.ibb.co/7Qf2s4R/factory-with-solar.jpg" alt="Laxmi Steel Factory with Solar Installation">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenge and Solution Section -->
+    <section id="challenge-solution">
+        <div class="container">
+            <h2 class="section-title">Challenge & Solution</h2>
+            <div class="cs-content">
+                <div class="cs-card">
+                    <h3><span>1</span>The Challenge</h3>
+                    <p>Nepal's industrial sector faces critical energy challenges that hamper growth and competitiveness:</p>
+                    <ul>
+                        <li><strong>Unreliable Grid Power:</strong> Frequent outages and voltage fluctuations causing production disruptions and equipment damage</li>
+                        <li><strong>Expensive Diesel Backup:</strong> High costs for diesel generators that eat into profits</li>
+                        <li><strong>Carbon Footprint:</strong> Increasing pressure to decarbonize as global markets implement regulations like CBAM</li>
+                        <li><strong>Investment Barriers:</strong> Hesitation to be "first movers" in adopting new clean energy technologies</li>
+                    </ul>
+                </div>
+                <div class="cs-card">
+                    <h3><span>2</span>Our Solution</h3>
+                    <p>GRIPS2 addresses these challenges through an integrated approach:</p>
+                    <ul>
+                        <li><strong>Smart Microgrid:</strong> 1MW solar PV system with battery storage providing reliable power during outages</li>
+                        <li><strong>AI-Driven Control:</strong> Swanbarton's Microgrid Management System (SB-MMS) optimizing energy use and storage</li>
+                        <li><strong>Cost Efficiency:</strong> Reducing dependence on diesel and minimizing grid electricity costs</li>
+                        <li><strong>De-risked Model:</strong> Proving the business case to catalyze broader adoption across Nepal's industrial sector</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Approach -->
+    <section id="technical">
+        <div class="container">
+            <h2 class="section-title">Technical Approach</h2>
+            <div class="tech-cards">
+                <div class="tech-card">
+                    <div class="icon">☀️</div>
+                    <h3>Solar PV System</h3>
+                    <p>1MW capacity solar photovoltaic system strategically installed to maximize energy generation while utilizing available factory roof space, generating clean energy directly where it's needed.</p>
+                </div>
+                <div class="tech-card">
+                    <div class="icon">🔋</div>
+                    <h3>Battery Energy Storage</h3>
+                    <p>Advanced battery system providing critical backup power during outages, enabling energy time-shifting to reduce peak charges, and stabilizing voltage fluctuations to protect sensitive equipment.</p>
+                </div>
+                <div class="tech-card">
+                    <div class="icon">🧠</div>
+                    <h3>Intelligent Control</h3>
+                    <p>Swanbarton's Microgrid Management System uses AI algorithms to predict load patterns, integrate weather data, and optimize energy flows, ensuring maximum cost savings and system performance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits">
+        <div class="container">
+            <h2 class="section-title">Key Benefits</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <div class="benefit-content">
+                        <h3>Economic Advantage</h3>
+                        <p>Reduce energy costs by up to 32% through decreased diesel consumption and optimized grid usage, with projected savings of $1.3 million over 25 years.</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-content">
+                        <h3>Enhanced Reliability</h3>
+                        <p>Achieve 99.9% power reliability, eliminating production disruptions and improving product quality through stabilized power supply.</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌍</div>
+                    <div class="benefit-content">
+                        <h3>Carbon Reduction</h3>
+                        <p>Offset 2,800 tonnes of CO₂ emissions, supporting Nepal's NDC targets and preparing industries for carbon border regulations.</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">👥</div>
+                    <div class="benefit-content">
+                        <h3>Social Impact</h3>
+                        <p>Improve working conditions for 500+ factory workers, create new technical jobs, and support gender equality through inclusive training programs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="partners">
+        <div class="container">
+            <h2 class="section-title">Our Partners</h2>
+            <p>GRIPS2 brings together expertise from UK and Nepal, supported by UNIDO's A2D Facility</p>
+            <div class="partners-container">
+                <img src="https://i.ibb.co/k9n1hv6/pa-logo.png" alt="Practical Action" class="partner-logo">
+                <img src="https://i.ibb.co/cCQCmHr/swanbarton-logo.png" alt="Swanbarton" class="partner-logo">
+                <img src="https://i.ibb.co/3cwXRgn/gham-power-logo.png" alt="Gham Power" class="partner-logo">
+                <img src="https://i.ibb.co/0QnCXMS/unido-logo.png" alt="UNIDO" class="partner-logo">
+                <img src="https://i.ibb.co/ZX4kRMf/laxmi-steel-logo.png" alt="Laxmi Steel" class="partner-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta">
+        <div class="container">
+            <h2>Join the Industrial Energy Revolution</h2>
+            <p>Whether you're an industry leader looking to reduce costs, an investor seeking green opportunities, or an energy professional interested in cutting-edge technology, GRIPS2 invites you to be part of Nepal's clean energy transformation.</p>
+            <div class="cta-buttons">
+                <a href="#" class="cta-primary">Schedule a Site Visit</a>
+                <a href="#" class="cta-secondary">Join Our Webinar Series</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>About GRIPS2</h3>
+                    <p>GRIPS2 is funded by the UNIDO A2D Facility, implementing Nepal's first industrial-scale smart solar storage microgrid to revolutionize how factories access reliable, affordable, and sustainable power.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter">T</i></a>
+                        <a href="#"><i class="fab fa-linkedin">L</i></a>
+                        <a href="#"><i class="fab fa-facebook">F</i></a>
+                        <a href="#"><i class="fab fa-youtube">Y</i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#challenge-solution">Solution</a></li>
+                        <li><a href="#technical">Technology</a></li>
+                        <li><a href="#benefits">Benefits</a></li>
+                        <li><a href="#partners">Partners</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Case Study</a></li>
+                        <li><a href="#">Technical Brief</a></li>
+                        <li><a href="#">News & Updates</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>Anuj Dhoj Joshi</li>
+                        <li>Project Director</li>
+                        <li>anuj.joshi@practicalaction.org.np</li>
+                        <li>+9779851017371</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Implementation: November 2024 - January 2028 | Funded by UNIDO A2D Facility</p>
+                <p>&copy; 2024 GRIPS2 Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
